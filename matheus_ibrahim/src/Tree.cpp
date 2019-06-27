@@ -1,16 +1,14 @@
 #include "Tree.hpp"
 
 Tree::Tree(){
-    this->root = new Node();
-    this->root->key = ' ';
-    this->root->code = ' ';
-    this->root->left = nullptr;
-    this->root->right = nullptr;
+    this->root = newNode();
 }
 
 struct Node* Tree::newNode(){
     struct Node* helper = new Node;  
-    helper->left =  helper->right = nullptr; 
+    helper->left =  helper->right = nullptr;
+    helper->key = ' ';
+    helper->code = " ";
     return helper; 
 }
 
@@ -54,4 +52,27 @@ Node* Tree::insertNode(char nodeCode, struct Node* node){
         return node->left;
     }
     return nullptr;
+}
+
+// struct Node* Tree::findNode(char code, struct Node* node){
+//     if(code == '.')
+//         return node->left;
+//     else if(code == '-')
+//         return node->left;
+//     return nullptr;
+// }
+
+char Tree::decodeNode(string letterCode){
+    char code;
+    struct Node* pos = this->root;
+    for(int i = 0; i < letterCode.length(); i++){
+        code = letterCode[i];
+        if(code == '.' || code == ',')
+            pos = code == '.' ? pos->left : pos ->right;
+        else
+            pos = nullptr;
+    }
+    if(pos != nullptr)
+      return pos->key;
+    return ' ';  
 }
