@@ -1,9 +1,11 @@
 #ifndef TREE_H
 #define TREE_H
 
-#include <string.h>
+#include <fstream>
+#include "string.h"
 
 using std::string;
+using std::ifstream;
 
 struct Node{
     struct Node* left;
@@ -14,9 +16,15 @@ struct Node{
 
 class Tree{
 private:
-    Node* root;
+    struct Node* root;
+    struct Node* newNode();
 public:
     Tree();
+    Node* insertNode(char,  struct Node*);
+    void printTree();
+    void createTree(string);
+    void decodeTree();
+    
 };
 
 
