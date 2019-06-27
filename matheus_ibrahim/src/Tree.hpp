@@ -27,6 +27,7 @@ public:
     void preOrder(struct Node*);
     void createTree(string);
     char decodeNode(string);
+    struct Node* getRoot();
     
 };
 
