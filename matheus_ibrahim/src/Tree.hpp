@@ -24,7 +24,7 @@ private:
 public:
     Tree();
     Node* insertNode(char,  struct Node*);
-    void printTree();
+    void preOrder(struct Node*);
     void createTree(string);
     char decodeNode(string);
     

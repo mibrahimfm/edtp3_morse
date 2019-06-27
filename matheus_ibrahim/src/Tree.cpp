@@ -74,5 +74,21 @@ char Tree::decodeNode(string letterCode){
     }
     if(pos != nullptr)
       return pos->key;
-    return ' ';  
+    return ' ';
+}
+
+void Tree::preOrder(struct Node* coverTree){
+    if(this->root == nullptr){ 
+        cout << "The tree is empty!\n";
+        return;
+    }
+    cout << "\n";
+    if(coverTree != nullptr){
+        if(coverTree->key != ' '){
+            cout << coverTree->key << " " << coverTree->code << "\n";
+            preOrder(coverTree->left);
+            preOrder(coverTree->right);
+        }
+    }
+
 }
