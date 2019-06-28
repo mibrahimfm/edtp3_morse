@@ -7,8 +7,7 @@ Tree::Tree(){
 struct Node* Tree::newNode(){
     struct Node* helper = new Node;  
     helper->left = nullptr; helper->right = nullptr;
-    helper->key = ' ';
-    helper->code = " ";
+    helper->key = ' ';  helper->code = " ";
     return helper; 
 }
 
@@ -17,17 +16,11 @@ void Tree::createTree(string file){
     ifstream operateMorseCode;
     string letterCode;
     struct Node* pos = root;
+
     operateMorseCode.open(file);
 
-
-
-    while (true){
+    while (!operateMorseCode.eof()){
         operateMorseCode >> input;
-        if(operateMorseCode.eof()){
-            pos->key = letter;
-            pos->code = letterCode;
-            break;
-        }
         
         if(input != '.' && input != '-'){
             pos->key = letter;
@@ -37,13 +30,15 @@ void Tree::createTree(string file){
             pos = this->root;
         }
         else{
-            code = input;
-            pos = insertNode(code, pos);
-            letterCode += code;
+            pos = insertNode(input, pos);
+            letterCode += input;
         }
 
     }
-    
+
+    pos->key = letter;
+    pos->code = letterCode;
+
     operateMorseCode.close();
 
 }
@@ -69,20 +64,12 @@ Node* Tree::insertNode(char nodeCode, struct Node* node){
     return nullptr;
 }
 
- struct Node* Tree::findNode(char code, struct Node* node){
-     if(code == '.')
-         return node->right;
-     else if(code == '-')
-         return node->left;
-     return nullptr;
- }
-
 char Tree::decodeNode(string letterCode){
     char code;
     struct Node* pos = this->root;
     for(int i = 0; i < letterCode.length(); i++){
         code = letterCode[i];
-        pos = findNode(code, pos);
+        pos =  (code == '.' ? pos->right : pos->left);
     }
     return pos->key;
 }

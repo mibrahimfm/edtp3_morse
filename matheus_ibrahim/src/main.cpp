@@ -13,7 +13,6 @@ int main(int argc, char** argv){
 	optional = string(argv[1]) == "-a" ? argv[1] : nullptr;
     Tree *morse = new Tree();
 
-
     morse->createTree("morse.txt");
 
     morse->translate();

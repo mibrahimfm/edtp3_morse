@@ -22,13 +22,12 @@ class Tree{
 private:
     struct Node* root;
     struct Node* newNode();
-    struct Node* findNode(char, struct Node*);
+    char decodeNode(string);
+    Node* insertNode(char,  struct Node*);
 public:
     Tree();
-    Node* insertNode(char,  struct Node*);
     void preOrder(struct Node*);
     void createTree(string);
-    char decodeNode(string);
     struct Node* getRoot();
     void translate();
 };
