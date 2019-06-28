@@ -26,9 +26,9 @@ private:
     Node* insertNode(char,  struct Node*);
 public:
     Tree();
+    struct Node* getRoot();
     void preOrder(struct Node*);
     void createTree(string);
-    struct Node* getRoot();
     void translate();
 };
 
