@@ -91,9 +91,36 @@ struct Node* Tree::getRoot() { return this->root;}
 
 void Tree::preOrder(struct Node* coverTree){
     if(coverTree != nullptr){
-            cout << coverTree->key << " " << coverTree->code << "\n";
+            cout << coverTree->key <<  " " << coverTree->code << "\n";
             preOrder(coverTree->left);
             preOrder(coverTree->right);
         }
 
+}
+
+void Tree::translate(){
+    string decoding, letterCode;
+    char code;
+
+    while (getline(cin, decoding)){
+    for(int i = 0; i < decoding.length(); i++){
+        code = decoding[i];
+        if(code == '.' || code == '-')
+            letterCode += code;
+        else if(code == ' '){
+            if(!letterCode.empty()){
+                cout << this->decodeNode(letterCode);
+                letterCode = "";
+            }
+            else{
+                cout << " ";
+            }
+        }
+    }
+    if(!letterCode.empty()){
+                cout << this->decodeNode(letterCode);
+                letterCode = "";
+            }
+    cout << "\n";
+    }
 }

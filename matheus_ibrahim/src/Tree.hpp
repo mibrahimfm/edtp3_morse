@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include <fstream>
-#include "string.h"
+#include <string>
 
 using std::string;
 using std::ifstream;
 using std::cout;
+using std::cin;
+using std::getline;
 
 struct Node{
     struct Node* left;
@@ -28,7 +30,7 @@ public:
     void createTree(string);
     char decodeNode(string);
     struct Node* getRoot();
-    
+    void translate();
 };
 
 
