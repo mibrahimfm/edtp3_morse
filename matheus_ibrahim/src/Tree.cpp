@@ -6,6 +6,7 @@ Tree::Tree(){
 
 struct Node* Tree::getRoot() { return this->root;}
 
+//Cria um nó vazio
 struct Node* Tree::newNode(){
     struct Node* helper = new Node;  
     helper->left = nullptr; helper->right = nullptr;
@@ -121,6 +122,7 @@ void Tree::translate(){
     }
 }
 
+//Função para imprimir a árvore em pré-ordem
 void Tree::preOrder(struct Node* coverTree){
     if(coverTree != nullptr){
             cout << coverTree->key <<  " " << coverTree->code << "\n";
