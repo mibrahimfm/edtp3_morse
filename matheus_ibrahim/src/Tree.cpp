@@ -15,7 +15,7 @@ struct Node* Tree::newNode(){
 }
 
 void Tree::createTree(string file){
-    char input, symbol = ' ';
+    char input, code, symbol = ' ';
     ifstream operateMorseCode;
     string letterCode;
     struct Node* pos = root;
@@ -125,7 +125,7 @@ void Tree::translate(){
 //Função para imprimir a árvore em pré-ordem
 void Tree::preOrder(struct Node* coverTree){
     if(coverTree != nullptr){
-            if(coverTree->key != ' ');
+            if(coverTree->key != ' ')
                 cout << coverTree->key <<  " " << coverTree->code << "\n";
             preOrder(coverTree->left);
             preOrder(coverTree->right);
